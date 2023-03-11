@@ -3,6 +3,9 @@ This repo contains some examples of RabbitMQ producers and consumers:
 ### Credentials
 The scripts the data in credentials.yml to authenticate to the RabbitMQ instance.
 
+### Schema
+The exchanges script integrates protobuffers to encode and decode data. The schema definition lives [here](https://github.com/mkiroshdz/rabbitmq-labs/tree/main/schema)
+
 ### [Hello](https://github.com/mkiroshdz/rabbitmq-labs/tree/main/hello)
 #### Summary
 This example produces and consume a simple hello message.
