@@ -1,4 +1,4 @@
-require './connection'
+require './connection/connection'
 
 Connection.exec do |channel|
   puts '[x] Waiting for msgs'

@@ -1,5 +1,5 @@
 require 'optparse'
-require './connection'
+require './connection/connection'
 
 Options = Struct.new(:msgs, :key, :type, :exchange)
 args = Options.new([], 'test', 'direct', 'amq.direct')
