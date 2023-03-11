@@ -5,6 +5,7 @@ GEM
     bunny (2.20.3)
       amq-protocol (~> 2.3, >= 2.3.1)
       sorted_set (~> 1, >= 1.0.2)
+    google-protobuf (3.22.2-x86_64-linux)
     rbtree (0.4.6)
     set (1.0.3)
     sorted_set (1.0.3)
@@ -16,6 +17,7 @@ PLATFORMS
 
 DEPENDENCIES
   bunny
+  google-protobuf
 
 BUNDLED WITH
    2.4.1

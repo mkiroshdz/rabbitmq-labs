@@ -2,4 +2,5 @@
 
 source "https://rubygems.org"
 
-gem "bunny"
+gem 'bunny'
+gem 'google-protobuf'
