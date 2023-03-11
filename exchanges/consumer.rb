@@ -3,7 +3,8 @@ require './connection/connection'
 Connection.exec do |channel|
   puts '[x] Waiting for msgs'
   queue = channel.queue(ARGV[0], durable: true )
-  queue.subscribe(block: true) do |delivery, props, body|
+  queue.subscribe(block: true) do |delivery, props, raw_body|
+    body = Marshal.load(raw_body)
     puts "[x] received #{delivery} #{props} #{body}"
     puts '*' * 20
   end

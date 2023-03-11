@@ -1,38 +1,18 @@
-require 'optparse'
 require './connection/connection'
+require './command/producer'
 
-Options = Struct.new(:msgs, :key, :type, :exchange)
-args = Options.new([], 'test', 'direct', 'amq.direct')
-
-parser = OptionParser.new do |opts|
-  opts.banner = "Usage: producer.rb [options]"
-
-  opts.on("-k KEY", "--key=KEY", "Set routing key") do |key|
-    args.key = key
+begin
+  args = Command.new(ARGV).args
+  Connection.exec do |channel|
+    exchange = channel.send(args[:exchange_type], args[:exchange_name])
+    args[:body].each do |msg|
+      payload = Marshal.dump(msg)
+      exchange.publish(payload, routing_key: args[:routing_key])
+      puts "[x] sent #{msg}"
+    end
   end
-
-  opts.on("-m MSG", "--msg=MSG", "Set msg body") do |msg|
-    args.msgs << msg
-  end
-
-  opts.on("-t TYPE", "--type=TYPE", "Set exchange type") do |t|
-    args.type = t
-  end
-
-  opts.on("-e EXCHANGE", "--exchange=EXCHANGE", "Set exchange name") do |ex|
-    args.exchange = ex
-  end
-end
-
-parser.parse!(ARGV)
-
-puts args
-
-Connection.exec do |channel|
-  exchange = channel.send(args.type, args.exchange)
-  args.msgs.each do |m|
-    exchange.publish(m, routing_key: args.key)
-    puts "[x] sent #{args.type} exchange - key: #{args.key} body: #{args.msgs}"
-  end
+rescue => e
+  puts e.message
+  puts "Execution finished"
 end
 
