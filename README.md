@@ -1,6 +1,9 @@
 This repo contains some examples of RabbitMQ producers and consumers:
 
-### (Hello)[https://github.com/mkiroshdz/rabbitmq-labs/tree/main/hello]
+### Credentials
+The scripts the data in credentials.yml to authenticate to the RabbitMQ instance.
+
+### [Hello](https://github.com/mkiroshdz/rabbitmq-labs/tree/main/hello)
 #### Summary
 This example produces and consume a simple hello message.
 #### Usage
@@ -9,7 +12,7 @@ This example produces and consume a simple hello message.
     ruby hello/consumer.rb # To consume the message
 ```
 
-### (Exchanges)[https://github.com/mkiroshdz/rabbitmq-labs/tree/main/exchanges]
+### [Exchanges](https://github.com/mkiroshdz/rabbitmq-labs/tree/main/exchanges)
 #### Summary
 Allows to produce messages using a particular exchange and consume from particular queues.
 #### Usage
